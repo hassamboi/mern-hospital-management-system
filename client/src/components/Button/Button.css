@@ -1,0 +1,27 @@
+.call-btn {
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #00458b;
+  display: inline-block;
+  width: auto;
+  min-width: 200px;
+  background-color: white;
+  padding: 25px;
+  border: 2px solid #00458b;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+}
+
+.call-btn:hover {
+  background-color: #00458b;
+  color: white;
+}

@@ -1,0 +1,7 @@
+.home .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+  /* min-height: calc(100vh - 6rem); */
+}
