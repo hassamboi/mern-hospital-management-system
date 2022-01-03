@@ -25,46 +25,19 @@ const App = () => {
           <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
 
           {/* Patient Dashboard Routes */}
-          <Route
-            path="/patient/dashboard"
-            element={user ? <PatientDashboard option={""} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/patient/dashboard/book-appointment"
-            element={user ? <PatientDashboard option={"/book-appointment"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/patient/dashboard/view-appointment"
-            element={user ? <PatientDashboard option={"/view-appointment"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/patient/dashboard/medical-record"
-            element={user ? <PatientDashboard option={"/medical-record"} /> : <Navigate to="/login" />}
-          />
 
+          <Route path="/patient/dashboard" element={<PatientDashboard option={""} />} />
+          <Route path="/patient/dashboard/book-appointment" element={<PatientDashboard option={"/book-appointment"} />} />
+          <Route path="/patient/dashboard/view-appointment" element={<PatientDashboard option={"/view-appointment"} />} />
+          <Route path="/patient/dashboard/medical-record" element={<PatientDashboard option={"/medical-record"} />} />
           {/* Staff Dashboard Routes */}
 
           <Route path="/staff/dashboard" element={user ? <StaffDashboard option={""} /> : <Navigate to="/login" />} />
-          <Route
-            path="/staff/dashboard/doctor"
-            element={user ? <StaffDashboard option={"/doctor"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/staff/dashboard/cashier"
-            element={user ? <StaffDashboard option={"/cashier"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/staff/dashboard/receptionist"
-            element={user ? <StaffDashboard option={"/receptionist"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/staff/dashboard/labassistant"
-            element={user ? <StaffDashboard option={"/labassistant"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/staff/dashboard/nurse"
-            element={user ? <StaffDashboard option={"/nurse"} /> : <Navigate to="/login" />}
-          />
+          <Route path="/staff/dashboard/doctor" element={user ? <StaffDashboard option={"/doctor"} /> : <Navigate to="/login" />} />
+          <Route path="/staff/dashboard/cashier" element={user ? <StaffDashboard option={"/cashier"} /> : <Navigate to="/login" />} />
+          <Route path="/staff/dashboard/receptionist" element={user ? <StaffDashboard option={"/receptionist"} /> : <Navigate to="/login" />} />
+          <Route path="/staff/dashboard/labassistant" element={user ? <StaffDashboard option={"/labassistant"} /> : <Navigate to="/login" />} />
+          <Route path="/staff/dashboard/nurse" element={user ? <StaffDashboard option={"/nurse"} /> : <Navigate to="/login" />} />
 
           {/* Default Route */}
           <Route path="*" element={<Home />} />
