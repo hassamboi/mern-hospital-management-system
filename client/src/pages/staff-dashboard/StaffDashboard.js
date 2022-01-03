@@ -22,6 +22,7 @@ import LabAssistant from "./views/LabAssistant/LabAssistant";
 import Nurse from "./views/Nurse/Nurse";
 import Profile from "./views/Profile/Profile";
 import Receptionist from "./views/Receptionist/Receptionist";
+import Pharmacist from "./views/Pharmacist/Pharmacist";
 
 const drawerWidth = 240;
 
@@ -106,6 +107,7 @@ function DashboardContent(props) {
               {option === "/receptionist" && <Receptionist />}
               {option === "/labassistant" && <LabAssistant />}
               {option === "/nurse" && <Nurse />}
+              {option === "/pharmacist" && <Pharmacist />}
             </Grid>
             <Copyright sx={{ pt: 4 }} text={"Hospital Management System"} />
           </Container>
