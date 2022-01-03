@@ -15,7 +15,7 @@ export default function Cashier() {
           height: "auto",
         }}
       >
-        Cashier
+        <h2 className="dashboard-title">Cashier</h2>
       </Paper>
     </Grid>
   );

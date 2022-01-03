@@ -25,22 +25,10 @@ const App = () => {
           <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
 
           {/* Patient Dashboard Routes */}
-          <Route
-            path="/patient/dashboard"
-            element={user ? <PatientDashboard option={""} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/patient/dashboard/book-appointment"
-            element={user ? <PatientDashboard option={"/book-appointment"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/patient/dashboard/view-appointment"
-            element={user ? <PatientDashboard option={"/view-appointment"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/patient/dashboard/medical-record"
-            element={user ? <PatientDashboard option={"/medical-record"} /> : <Navigate to="/login" />}
-          />
+          <Route path="/patient/dashboard" element={<PatientDashboard option={""} />} />
+          <Route path="/patient/dashboard/book-appointment" element={<PatientDashboard option={"/book-appointment"} />} />
+          <Route path="/patient/dashboard/view-appointment" element={<PatientDashboard option={"/view-appointment"} />} />
+          <Route path="/patient/dashboard/medical-record" element={<PatientDashboard option={"/medical-record"} />} />
 
           {/* Staff Dashboard Routes */}
 

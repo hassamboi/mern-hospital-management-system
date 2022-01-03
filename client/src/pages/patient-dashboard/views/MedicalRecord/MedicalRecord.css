@@ -1,0 +1,21 @@
+.profile-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-content div,
+.profile-content label {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.profile-content span {
+  font-weight: normal;
+}
+
+.profile-content div {
+  width: 150px;
+  height: 150px;
+}
