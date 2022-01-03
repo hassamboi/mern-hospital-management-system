@@ -7,8 +7,12 @@ const staffController = require("../../controllers/staff/staffController");
 // login staff
 router.post("/login", staffController.staff_login);
 
+// register staff
+router.post("/register", staffController.staff_register);
+
 // get patient history
 router.get("/history", staffController.staff_history_get);
+router.get("/", staffController.staff_index);
 
 // specific routes for each staff member
 router.use("/doctor", require("./doctor/doctorRoutes"));

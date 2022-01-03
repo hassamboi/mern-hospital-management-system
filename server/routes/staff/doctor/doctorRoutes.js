@@ -4,6 +4,6 @@ const doctorController = require("../../../controllers/staff/doctor/doctorContro
 
 // --- DOCTOR ROUTES ---
 
-router.put("/", doctorController.doctor_prescription_put);
+router.post("/", doctorController.doctor_prescription_post);
 
 module.exports = router;

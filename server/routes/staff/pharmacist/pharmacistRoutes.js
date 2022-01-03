@@ -4,6 +4,6 @@ const pharmacistController = require("../../../controllers/staff/pharmacist/phar
 
 // --- PHARMACIST ROUTES ---
 
-router.put("/", pharmacistController.pharmacist_medicine_put);
+router.post("/", pharmacistController.pharmacist_medicine_post);
 
 module.exports = router;

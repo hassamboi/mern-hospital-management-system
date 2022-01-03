@@ -85,17 +85,39 @@ const patient_login = (req, res) => {
 
 const patient_appointment_post = (req, res) => {
   // create an appointment for patient
+  const { id, date, description } = req.body;
+  const newRecord = { appointment_details: { date, description } };
+  console.log(newRecord);
+  Patient.findByIdAndUpdate(id, { $push: { medical_records: newRecord } }, (error, success) =>
+    error ? res.status(400).json({ msg: "Something went wrong" }) : res.json({ msg: "Appointment booked successfully" })
+  );
 };
 
-const patient_appointment_get = (req, res) => {};
+const patient_index = (req, res) => {
+  // get patient data
+  const { id } = req.body;
 
-const patient_record_get = (req, res) => {};
+  // return the patient's data except for the password
+  Patient.findById(id)
+    .select("-password")
+    .then(patient => res.json(patient));
+};
+
+const patient_history_get = (req, res) => {
+  // get patient data
+  const { id } = req.body;
+
+  // return the patient's data except for the password
+  Patient.findById(id)
+    .select("medical_records -_id")
+    .then(patient => res.json(patient));
+};
 
 // exporting the controllers
 module.exports = {
   patient_register,
   patient_login,
   patient_appointment_post,
-  patient_appointment_get,
-  patient_record_get,
+  patient_index,
+  patient_history_get,
 };

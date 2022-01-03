@@ -4,6 +4,6 @@ const receptionistController = require("../../../controllers/staff/receptionist/
 
 // --- RECEPTIONIST ROUTES ---
 
-router.put("/", receptionistController.receptionist_appointment_put);
+router.post("/", receptionistController.receptionist_appointment_post);
 
 module.exports = router;

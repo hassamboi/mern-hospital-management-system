@@ -1,7 +1,7 @@
 const Patient = require("../../../models/Patient");
 
-const nurse_examination_put = (req, res) => {
+const nurse_examination_post = (req, res) => {
   // get the patient id and create an examination
 };
 
-module.exports = { nurse_examination_put };
+module.exports = { nurse_examination_post };

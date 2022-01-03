@@ -4,6 +4,6 @@ const nurseController = require("../../../controllers/staff/nurse/nurseControlle
 
 // --- NURSE ROUTES ---
 
-router.put("/", nurseController.nurse_examination_put);
+router.post("/", nurseController.nurse_examination_post);
 
 module.exports = router;

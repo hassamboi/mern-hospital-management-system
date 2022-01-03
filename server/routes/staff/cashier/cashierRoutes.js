@@ -4,6 +4,6 @@ const cashierController = require("../../../controllers/staff/cashier/cashierCon
 
 // --- CASHIER ROUTES ---
 
-router.put("/", cashierController.cashier_bill_put);
+router.post("/", cashierController.cashier_bill_post);
 
 module.exports = router;

@@ -4,6 +4,6 @@ const labAssistantController = require("../../../controllers/staff/labassistant/
 
 // --- LAB-ASSISTANT ROUTES ---
 
-router.put("/", labAssistantController.labAssistant_test_put);
+router.post("/", labAssistantController.labAssistant_test_post);
 
 module.exports = router;

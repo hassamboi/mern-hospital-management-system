@@ -2,51 +2,51 @@ const mongoose = require("mongoose");
 
 // schema for a single bill item (used in patient->medical_records->payment_details)
 const billItemSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  description: { type: String, required: true },
-  price: { type: Number, required: true },
+  name: { type: String },
+  description: { type: String },
+  price: { type: Number },
 });
 
 // schema for a single test (used in patient->medical_records->test_report)
 const testSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  description: { type: String, required: true },
-  result: { type: Boolean, required: true },
+  name: { type: String },
+  description: { type: String },
+  result: { type: Boolean },
 });
 
 // schema for a single medicine (used in patient->medical_records->medicines)
 const medicineSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  dosage_mg: { type: Number, required: true },
-  timings: { type: String, required: true },
-  prepared_by: { type: String, required: true },
+  name: { type: String },
+  dosage_mg: { type: Number },
+  timings: { type: String },
+  prepared_by: { type: String },
 });
 
 // schema to store all medical records for patients (used in patient)
 const medicalRecordSchema = new mongoose.Schema({
   appointment_details: {
-    clinicNumber: { type: Number, required: true, default: 0 },
-    date: { type: Date, required: true },
-    description: { type: String, required: true },
+    clinicNumber: { type: Number, default: 0 },
+    date: { type: Date },
+    description: { type: String },
   },
   prescription: {
-    doctor_comments: { type: String, required: true },
+    doctor_comments: { type: String },
     medicines: [medicineSchema],
-    given_by: { type: String, required: true },
-    date: { type: Date, required: true },
+    given_by: { type: String },
+    date: { type: Date },
   },
   test_report: {
-    comments: { type: String, required: true },
+    comments: { type: String },
     tests: [testSchema],
-    generated_by: { type: String, required: true },
+    generated_by: { type: String },
   },
   payment_details: {
-    total: { type: Number, required: true },
-    issue_date: { type: Date, required: true },
-    due_date: { type: Date, required: true },
-    tax_rate: { type: Number, required: true },
+    total: { type: Number },
+    issue_date: { type: Date },
+    due_date: { type: Date },
+    tax_rate: { type: Number },
     bill_items: [billItemSchema],
-    generated_by: { type: String, required: true },
+    generated_by: { type: String },
   },
 });
 

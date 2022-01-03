@@ -10,7 +10,7 @@ router.post("/login", patientController.patient_login);
 router.post("/appointment", patientController.patient_appointment_post);
 
 // handle get requests
-router.get("/appointment", patientController.patient_appointment_get);
-router.get("/record", patientController.patient_record_get);
+router.get("/", patientController.patient_index);
+router.get("/history", patientController.patient_history_get);
 
 module.exports = router;
