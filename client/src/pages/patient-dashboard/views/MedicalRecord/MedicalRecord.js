@@ -1,43 +1,39 @@
-import * as React from 'react'
-import PropTypes from 'prop-types'
-import Box from '@mui/material/Box'
-import Collapse from '@mui/material/Collapse'
-import IconButton from '@mui/material/IconButton'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TableRow from '@mui/material/TableRow'
-import Typography from '@mui/material/Typography'
+import * as React from "react";
+import PropTypes from "prop-types";
+import Box from "@mui/material/Box";
+import Collapse from "@mui/material/Collapse";
+import IconButton from "@mui/material/IconButton";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Typography from "@mui/material/Typography";
 
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
-import Grid from '@mui/material/Grid'
-import Paper from '@mui/material/Paper'
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 
 // styles
-import './MedicalRecord.css'
+import "./MedicalRecord.css";
 
 function createData(name) {
   return {
     name,
-  }
+  };
 }
 
 function Row(props) {
-  const { row } = props
-  const [open, setOpen] = React.useState(false)
+  const { row } = props;
+  const [open, setOpen] = React.useState(false);
 
   return (
     <React.Fragment>
-      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
+          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
@@ -112,16 +108,10 @@ function Row(props) {
         </TableCell>
       </TableRow>
     </React.Fragment>
-  )
+  );
 }
 
-const rows = [
-  createData('Record 1'),
-  createData('Record 2'),
-  createData('Record 3'),
-  createData('Record 4'),
-  createData('Record 5'),
-]
+const rows = [createData("Record 1"), createData("Record 2"), createData("Record 3"), createData("Record 4"), createData("Record 5")];
 
 export default function MedicalRecord() {
   return (
@@ -129,9 +119,9 @@ export default function MedicalRecord() {
       <Paper
         sx={{
           p: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          height: 'auto',
+          display: "flex",
+          flexDirection: "column",
+          height: "auto",
         }}
       >
         <h2 className="dashboard-title">Medical Record</h2>
@@ -144,7 +134,7 @@ export default function MedicalRecord() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+              {rows.map(row => (
                 <Row align="left" key={row.name} row={row} />
               ))}
             </TableBody>
@@ -152,5 +142,5 @@ export default function MedicalRecord() {
         </TableContainer>
       </Paper>
     </Grid>
-  )
+  );
 }

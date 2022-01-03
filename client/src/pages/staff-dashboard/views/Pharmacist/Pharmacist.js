@@ -2,9 +2,9 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 
 // styles
-import "./Cashier.css";
+import "./Pharmacist.css";
 
-export default function Cashier() {
+export default function Pharmacist() {
   return (
     <Grid item xs={12} md={12} lg={12}>
       <Paper
@@ -15,7 +15,7 @@ export default function Cashier() {
           height: "auto",
         }}
       >
-        <h2 className="dashboard-title">Cashier</h2>
+        Pharmacist
       </Paper>
     </Grid>
   );
