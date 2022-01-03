@@ -61,6 +61,8 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
               </Table>
+            </Box>
+            <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
                 Prescription Details
               </Typography>
@@ -74,6 +76,8 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
               </Table>
+            </Box>
+            <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
                 Test Reports Details
               </Typography>
@@ -86,6 +90,8 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
               </Table>
+            </Box>
+            <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
                 Payment Details
               </Typography>
