@@ -34,7 +34,6 @@ export default function Doctor() {
 
   const handleEdit = e => {
     setrenderForm(false);
-    setEdit(true);
   };
   return (
     <Grid item xs={12} md={12} lg={12}>
