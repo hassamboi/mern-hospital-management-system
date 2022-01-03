@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 * {
   margin: 0;
@@ -16,7 +16,7 @@
 
 body {
   background-color: #f8f8f8 !important;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   line-height: 1 !important;
 }
 
@@ -25,7 +25,8 @@ header {
 }
 
 .dashboard-title {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-bottom: 1.5rem;
   font-weight: normal;
   color: #00458b;
 }
