@@ -33,7 +33,7 @@ app.use(bp.json());
 app.use(bp.urlencoded({ extended: false }));
 
 // handle patient routes
-app.use("/patient", require("./routes/patientRoutes.js"));
+app.use("/patient", require("./routes/patient/patientRoutes"));
 
 // handle staff routes
-app.use("/staff", require("./routes/staffRoutes"));
+app.use("/staff", require("./routes/staff/staffRoutes"));

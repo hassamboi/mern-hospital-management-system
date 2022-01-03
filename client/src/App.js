@@ -44,28 +44,13 @@ const App = () => {
 
           {/* Staff Dashboard Routes */}
 
-          <Route path="/staff/dashboard" element={user ? <StaffDashboard option={""} /> : <Navigate to="/login" />} />
-          <Route
-            path="/staff/dashboard/doctor"
-            element={user ? <StaffDashboard option={"/doctor"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/staff/dashboard/cashier"
-            element={user ? <StaffDashboard option={"/cashier"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/staff/dashboard/receptionist"
-            element={user ? <StaffDashboard option={"/receptionist"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/staff/dashboard/labassistant"
-            element={user ? <StaffDashboard option={"/labassistant"} /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/staff/dashboard/nurse"
-            element={user ? <StaffDashboard option={"/nurse"} /> : <Navigate to="/login" />}
-          />
-
+          <Route path="/staff/dashboard" element={<StaffDashboard option={""} />} />
+          <Route path="/staff/dashboard/doctor" element={<StaffDashboard option={"/doctor"} />} />
+          <Route path="/staff/dashboard/cashier" element={<StaffDashboard option={"/cashier"} />} />
+          <Route path="/staff/dashboard/receptionist" element={<StaffDashboard option={"/receptionist"} />} />
+          <Route path="/staff/dashboard/labassistant" element={<StaffDashboard option={"/labassistant"} />} />
+          <Route path="/staff/dashboard/nurse" element={<StaffDashboard option={"/nurse"} />} />
+          <Route path="/staff/dashboard/pharmacist" element={<StaffDashboard option={"/pharmacist"} />} />
           {/* Default Route */}
           <Route path="*" element={<Home />} />
         </Routes>

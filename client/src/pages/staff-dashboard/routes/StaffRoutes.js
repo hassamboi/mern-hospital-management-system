@@ -45,6 +45,12 @@ export default function MenuItems({ handleRouteChange }) {
         </ListItemIcon>
         <ListItemText primary="Nurse" />
       </ListItem>
+      <ListItem button onClick={() => handleRouteChange("/pharmacist")}>
+        <ListItemIcon>
+          <LocalHospitalIcon />
+        </ListItemIcon>
+        <ListItemText primary="Pharmacist" />
+      </ListItem>
     </div>
   );
 }
