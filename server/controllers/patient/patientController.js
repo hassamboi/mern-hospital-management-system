@@ -105,8 +105,7 @@ const patient_index = (req, res) => {
 
 const patient_history_get = (req, res) => {
   // get patient data
-  const { id } = req.body;
-
+  const id = req.params.id;
   // return the patient's data except for the password
   Patient.findById(id)
     .select("medical_records -_id")

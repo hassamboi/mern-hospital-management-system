@@ -6,18 +6,27 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import { Box } from "@mui/system";
-
+import api from "../../../../api/axios";
+import { useAuthContext } from "../../../../hooks/useAuthContext";
 // styles
 
 export default function BookAppointment() {
-  const [timings, setTimings] = useState("");
-  const [desc, setDesc] = useState("");
-
-  const handleSubmit = e => {
+  const [date, setDate] = useState("");
+  const [description, setDescription] = useState("");
+  const { user } = useAuthContext();
+  const handleSubmit = async e => {
     e.preventDefault();
-    console.log(timings, desc);
-  };
+    console.log(date, description);
 
+    const data = { date, description, id: user.id };
+    try {
+      const response = await api.post("/patient/appointment", data).then(userData => {
+        console.log(userData.data);
+      });
+    } catch (err) {
+      console.log(`Error : ${err.message}`);
+    }
+  };
   // const handleChange = e => {
   //   setTimings(e.target.value);
   // };
@@ -35,14 +44,14 @@ export default function BookAppointment() {
         <h2 className="dashboard-title">Book Appointment</h2>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
+            sx={{ mb: 4 }}
             id="datetime-local"
             label="Next appointment"
             fullWidth
             type="datetime-local"
-            defaultValue="2022-01-12T10:30"
-            margin="normal"
             label="Select Timing"
-            onChange={e => setTimings(e.target.value)}
+            value={date}
+            onChange={e => setDate(e.target.value)}
             helperText="Please select suitable timings"
             // sx={{ width: 250 }}
             InputLabelProps={{
@@ -56,10 +65,9 @@ export default function BookAppointment() {
             id="outlined-multiline-flexible"
             label="Description"
             fullWidth
-            margin="normal"
             multiline
-            value={desc}
-            onChange={e => setDesc(e.target.value)}
+            value={description}
+            onChange={e => setDescription(e.target.value)}
             helperText="What's the appointment regarding"
             maxRows={5}
           >

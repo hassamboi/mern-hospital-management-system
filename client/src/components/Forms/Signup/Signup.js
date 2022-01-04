@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { ThemeProvider } from "@mui/material/styles";
-
+import api from "../../../api/axios";
 // react
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -32,10 +32,11 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [dob, setDOB] = useState("");
   const [gender, setGender] = useState("Male");
-  const [timings, setTimings] = useState("");
 
   // sign up hook
 
@@ -43,9 +44,20 @@ export default function Signup() {
   const navigate = useNavigate();
 
   // form submit handler
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    console.log(name, email, password);
+    console.log(name, email, password, age, dob, gender, address, phone);
+
+    const data = { name, email, password, age, dob, gender, address, phone };
+    try {
+      const response = await api.post("/patient/register", data).then(userData => {
+        console.log(userData.data);
+        //  loginUser(userData.data);
+        navigate("/login");
+      });
+    } catch (err) {
+      console.log(`Error : ${err.message}`);
+    }
   };
 
   return (
@@ -79,10 +91,17 @@ export default function Signup() {
                 <TextField required fullWidth name="password" label="Password" type="password" id="password" autoComplete="new-password" onChange={e => setPassword(e.target.value)} value={password} />
               </Grid>
               <Grid item xs={12}>
+                <TextField required fullWidth type="text" id="address" label="Address" name="address" autoComplete="address" onChange={e => setAddress(e.target.value)} value={address} />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField required fullWidth name="phone" label="Phone" type="text" id="phone" autoComplete="phone" onChange={e => setPhone(e.target.value)} value={phone} />
+              </Grid>
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   type="date"
-                  onChange={e => setTimings(e.target.value)}
+                  onChange={e => setDOB(e.target.value)}
+                  value={dob}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -92,7 +111,7 @@ export default function Signup() {
               </Grid>
               <Grid item xs={12}>
                 <TextField required type="number" id="age" label="Age" name="age" onChange={e => setAge(e.target.value)} value={age} />
-                <Select sx={{ ml: 1 }} margin="normal" required id="gender" name="Gender" value={gender} onChange={e => setGender(e.target.value)}>
+                <Select sx={{ ml: 1 }} required id="gender" name="Gender" value={gender} onChange={e => setGender(e.target.value)}>
                   <MenuItem value={"Male"}>Male</MenuItem>
                   <MenuItem value={"Female"}>Female</MenuItem>
                 </Select>

@@ -10,7 +10,12 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const { user } = useAuthContext();
+  const { user, logout_user } = useAuthContext();
+  const handleLogout = () => {
+    logout_user();
+    navigate("/");
+  };
+
   return (
     <header>
       <div className="container">
@@ -39,10 +44,9 @@ export default function Navbar() {
                     Dashboard
                   </Link>
                 </li>
-                {/* <li className="btn-link">
-                  {!isPending && <a onClick={() => logout().then(() => navigate("/"))}>Log out</a>}
-                  {isPending && <a disabled>Logging out...</a>}
-                </li> */}
+                <li className="btn-link">
+                  <a onClick={handleLogout}>Log out</a>
+                </li>
               </>
             )}
           </ul>

@@ -20,15 +20,15 @@ export default function Profile() {
         }}
       >
         <h2 className="dashboard-title">Profile</h2>
-        {/* <div className="profile-content">
-          <Avatar alt={`${user.displayName}`} />
+        <div className="profile-content">
+          <Avatar alt={`${user.name}`} />
           <label>
-            Name: <span>{user.displayName}</span>
+            Name: <span>{user.name}</span>
           </label>
           <label>
             Email: <span>{user.email}</span>
           </label>
-        </div> */}
+        </div>
       </Paper>
     </Grid>
   );

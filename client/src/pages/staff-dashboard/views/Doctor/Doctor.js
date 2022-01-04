@@ -51,7 +51,6 @@ export default function Doctor() {
             id="outlined-multiline-flexible"
             label="Enter Email"
             fullWidth
-            margin="normal"
             multiline
             value={data}
             onChange={e => setData(e.target.value)}

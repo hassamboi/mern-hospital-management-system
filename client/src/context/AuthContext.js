@@ -18,20 +18,20 @@ export const authReducer = (state, action) => {
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
     token: localStorage.getItem("token"),
-    user: localStorage.getItem("user"),
+    user: JSON.parse(localStorage.getItem("user")),
     authIsReady: false,
   });
 
   const login_user = data => {
     localStorage.setItem("token", data.token);
-    localStorage.setItem("user", data.user);
+    localStorage.setItem("user", JSON.stringify(data.user));
     dispatch({ type: "LOGIN", payload: data });
   };
 
-  const logout_user = data => {
+  const logout_user = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    dispatch({ type: "LOGOUT", payload: data });
+    dispatch({ type: "LOGOUT", payload: null });
   };
 
   console.log("AuthContext state:", state);

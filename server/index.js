@@ -30,7 +30,7 @@ app.use(morgan("dev"));
 
 // body parser for url encoded data (form data)
 app.use(bp.json());
-app.use(bp.urlencoded({ extended: false }));
+app.use(bp.urlencoded({ extended: true }));
 
 // handle patient routes
 app.use("/patient", require("./routes/patient/patientRoutes"));
