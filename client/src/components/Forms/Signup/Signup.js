@@ -78,23 +78,72 @@ export default function Signup() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <TextField required fullWidth id="name" label="Full Name" name="name" autoComplete="name" onChange={e => setName(e.target.value)} value={name} />
+                <TextField
+                  required
+                  fullWidth
+                  id="name"
+                  label="Full Name"
+                  name="name"
+                  autoComplete="name"
+                  onChange={e => setName(e.target.value)}
+                  value={name}
+                />
               </Grid>
 
               <Grid item xs={12}>
-                <TextField required fullWidth type="email" id="email" label="Email Address" name="email" autoComplete="email" onChange={e => setEmail(e.target.value)} value={email} />
+                <TextField
+                  required
+                  fullWidth
+                  type="email"
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  onChange={e => setEmail(e.target.value)}
+                  value={email}
+                />
               </Grid>
               <Grid item xs={12}>
-                <TextField required fullWidth name="password" label="Password" type="password" id="password" autoComplete="new-password" onChange={e => setPassword(e.target.value)} value={password} />
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                  onChange={e => setPassword(e.target.value)}
+                  value={password}
+                />
               </Grid>
               <Grid item xs={12}>
-                <TextField required fullWidth type="text" id="address" label="Address" name="address" autoComplete="address" onChange={e => setAddress(e.target.value)} value={address} />
+                <TextField
+                  required
+                  fullWidth
+                  type="text"
+                  id="address"
+                  label="Address"
+                  name="address"
+                  autoComplete="address"
+                  onChange={e => setAddress(e.target.value)}
+                  value={address}
+                />
               </Grid>
               <Grid item xs={12}>
-                <TextField required fullWidth name="phone" label="Phone" type="text" id="phone" autoComplete="phone" onChange={e => setPhone(e.target.value)} value={phone} />
+                <TextField
+                  required
+                  fullWidth
+                  name="phone"
+                  label="Phone"
+                  type="text"
+                  id="phone"
+                  autoComplete="phone"
+                  onChange={e => setPhone(e.target.value)}
+                  value={phone}
+                />
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -105,36 +154,39 @@ export default function Signup() {
                   InputLabelProps={{
                     shrink: true,
                   }}
-                >
-                  {" "}
-                </TextField>
+                  required
+                />
               </Grid>
-              <Grid item xs={12}>
-                <TextField required type="number" id="age" label="Age" name="age" onChange={e => setAge(e.target.value)} value={age} />
-                <Select sx={{ ml: 1 }} required id="gender" name="Gender" value={gender} onChange={e => setGender(e.target.value)}>
+              <Grid item xs={12} style={{ display: "flex", justifyContent: "space-between" }}>
+                <TextField
+                  required
+                  fullWidth
+                  type="number"
+                  id="age"
+                  label="Age"
+                  name="age"
+                  onChange={e => setAge(e.target.value)}
+                  value={age}
+                />
+                <Select
+                  sx={{ ml: 1 }}
+                  required
+                  fullWidth
+                  id="gender"
+                  name="Gender"
+                  value={gender}
+                  onChange={e => setGender(e.target.value)}
+                >
                   <MenuItem value={"Male"}>Male</MenuItem>
                   <MenuItem value={"Female"}>Female</MenuItem>
                 </Select>
               </Grid>
-
-              {/* <Grid item xs={12}>
-                
-              </Grid> */}
             </Grid>
-            {/* {!isPending && (
-              <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                Sign Up
-              </Button>
-            )}
-            {isPending && (
-              <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} disabled>
-                Loading
-              </Button>
-            )} */}
-            {/* {error && <div className="error">{error}</div>} */}
+
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Sign Up
             </Button>
+
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link onClick={() => navigate("/login")} color="secondary.main" href="#" variant="body2">

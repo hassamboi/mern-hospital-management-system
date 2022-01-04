@@ -11,7 +11,7 @@ router.post("/login", staffController.staff_login);
 router.post("/register", staffController.staff_register);
 
 // get patient history
-router.get("/history", staffController.staff_history_get);
+router.get("/history/:email", staffController.staff_history_get);
 router.get("/", staffController.staff_index);
 
 // specific routes for each staff member

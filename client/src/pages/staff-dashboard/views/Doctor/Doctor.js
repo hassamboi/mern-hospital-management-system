@@ -11,32 +11,47 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
-import "./Doctor.css";
+// axios
+import api from "../../../../api/axios";
 
-// styles
+// hooks
+import { useAuthContext } from "./../../../../hooks/useAuthContext";
 
 export default function Doctor() {
+  const { user } = useAuthContext();
   const [records, setRecords] = useState([]);
-
   const [searchEmail, setSearchEmail] = useState("");
   const [renderForm, setRenderForm] = useState(false);
-  const [date, setDate] = useState(new Date(Date.now()));
   const [doctorComments, setDoctorComments] = useState("");
   const [index, setIndex] = useState(null);
 
-  const handlePatientSearch = e => {
+  const handlePatientSearch = async e => {
     e.preventDefault();
-    console.log(searchEmail);
+    try {
+      const response = await api.get(`/staff/history/${encodeURIComponent(searchEmail)}`).then(userData => {
+        setRecords(userData.data.medical_records);
+      });
+    } catch (err) {
+      console.log(`Error : ${err.message}`);
+    }
   };
 
-  const handlePrescriptionSubmit = e => {
+  const handlePrescriptionSubmit = async e => {
     e.preventDefault();
-    console.log(index, doctorComments, date);
+    const date = new Date(Date.now());
+    try {
+      const data = { index, doctor_comments: doctorComments, date, email: searchEmail, given_by: user.name };
+      const response = await api.post("/staff/doctor", data).then(userData => {
+        setRenderForm(false);
+        setDoctorComments("");
+      });
+    } catch (err) {
+      console.log(`Error : ${err.message}`);
+    }
   };
 
   const handleEdit = e => {
     setIndex(e.target.value);
-    setDate(new Date(Date.now()));
     setDoctorComments("");
     setRenderForm(true);
   };
@@ -84,20 +99,6 @@ export default function Doctor() {
               required
               sx={{ mb: 2, mt: 2 }}
             />
-            <TextField
-              id="datetime-local"
-              label="Next appointment"
-              fullWidth
-              type="datetime-local"
-              label="Select Timing"
-              onChange={e => setDate(e.target.value)}
-              helperText="Please select suitable timings"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              required
-              sx={{ mb: 2, mt: 2 }}
-            />
 
             <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
               Update Prescription
@@ -109,17 +110,28 @@ export default function Doctor() {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
+                  <TableCell align="center">Record Id</TableCell>
                   <TableCell align="center">Date</TableCell>
                   <TableCell align="center">Doctor Comments</TableCell>
+                  <TableCell align="center">Given By</TableCell>
+                  <TableCell align="center">Medicines</TableCell>
                   <TableCell align="center">Edit</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {records.map((record, index) => (
                   <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                    <TableCell align="center">{record.prescription.date}</TableCell>
+                    <TableCell align="center">{record._id}</TableCell>
+                    <TableCell align="center">
+                      {record.prescription.date
+                        ? new Date(record.prescription.date).toDateString()
+                        : new Date(Date.now()).toDateString()}
+                    </TableCell>
                     <TableCell align="center">{record.prescription.doctor_comments}</TableCell>
                     <TableCell align="center">{record.prescription.given_by}</TableCell>
+                    <TableCell align="center">
+                      {record.prescription.medicines.map(medicine => medicine.name + ", ")}
+                    </TableCell>
                     <TableCell align="center">
                       <Button onClick={handleEdit} name="edit" value={index}>
                         Edit

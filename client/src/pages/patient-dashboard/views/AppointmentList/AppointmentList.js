@@ -10,9 +10,6 @@ import api from "../../../../api/axios";
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../../../../hooks/useAuthContext";
 
-// styles
-import "./AppointmentList.css";
-
 export default function AppointmentList() {
   const { user } = useAuthContext();
   const [records, setRecords] = useState([]);
@@ -38,8 +35,9 @@ export default function AppointmentList() {
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
+                <TableCell align="center">Record Id</TableCell>
                 <TableCell align="center">Clinic Number</TableCell>
-                <TableCell align="center">Date</TableCell>
+                <TableCell align="center">Date & Time</TableCell>
                 <TableCell align="center">Description</TableCell>
               </TableRow>
             </TableHead>
@@ -47,8 +45,9 @@ export default function AppointmentList() {
               {records &&
                 records.map((record, index) => (
                   <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                    <TableCell align="center">{record._id}</TableCell>
                     <TableCell align="center">{record.appointment_details.clinicNumber}</TableCell>
-                    <TableCell align="center">{record.appointment_details.date}</TableCell>
+                    <TableCell align="center">{new Date(record.appointment_details.date).toUTCString()}</TableCell>
                     <TableCell align="center">{record.appointment_details.description}</TableCell>
                   </TableRow>
                 ))}

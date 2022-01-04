@@ -23,6 +23,7 @@ import Nurse from "./views/Nurse/Nurse";
 import Profile from "./views/Profile/Profile";
 import Receptionist from "./views/Receptionist/Receptionist";
 import Pharmacist from "./views/Pharmacist/Pharmacist";
+import { useAuthContext } from "./../../hooks/useAuthContext";
 
 const drawerWidth = 240;
 
@@ -58,10 +59,13 @@ function DashboardContent(props) {
     setOpen(!open);
   };
 
+  const { user } = useAuthContext();
+
   const navigate = useNavigate();
 
   // set views and change routes
   const [option, setOption] = React.useState(props.option);
+
   const handleRouteChange = view => {
     setOption(view);
     navigate("/staff/dashboard" + view);
@@ -102,12 +106,12 @@ function DashboardContent(props) {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               {option === "" && <Profile />}
-              {option === "/doctor" && <Doctor />}
-              {option === "/cashier" && <Cashier />}
-              {option === "/receptionist" && <Receptionist />}
-              {option === "/labassistant" && <LabAssistant />}
-              {option === "/nurse" && <Nurse />}
-              {option === "/pharmacist" && <Pharmacist />}
+              {user.jobTitle === "doctor" && option === "/doctor" && <Doctor />}
+              {user.jobTitle === "cashier" && option === "/cashier" && <Cashier />}
+              {user.jobTitle === "receptionist" && option === "/receptionist" && <Receptionist />}
+              {user.jobTitle === "labassistant" && option === "/labassistant" && <LabAssistant />}
+              {user.jobTitle === "nurse" && option === "/nurse" && <Nurse />}
+              {user.jobTitle === "pharmacist" && option === "/pharmacist" && <Pharmacist />}
             </Grid>
             <Copyright sx={{ pt: 4 }} text={"Hospital Management System"} />
           </Container>

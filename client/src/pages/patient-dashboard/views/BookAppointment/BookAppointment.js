@@ -1,5 +1,3 @@
-import "./BookAppointment.css";
-
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -11,9 +9,10 @@ import { useAuthContext } from "../../../../hooks/useAuthContext";
 // styles
 
 export default function BookAppointment() {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date(Date.now()));
   const [description, setDescription] = useState("");
   const { user } = useAuthContext();
+
   const handleSubmit = async e => {
     e.preventDefault();
     console.log(date, description);
@@ -21,15 +20,15 @@ export default function BookAppointment() {
     const data = { date, description, id: user.id };
     try {
       const response = await api.post("/patient/appointment", data).then(userData => {
-        console.log(userData.data);
+        setDate(new Date(Date.now()));
+        setDescription("");
+        console.log(userData);
       });
     } catch (err) {
       console.log(`Error : ${err.message}`);
     }
   };
-  // const handleChange = e => {
-  //   setTimings(e.target.value);
-  // };
+
   return (
     <Grid item xs={12} md={12} lg={12}>
       <Paper
@@ -42,7 +41,7 @@ export default function BookAppointment() {
         }}
       >
         <h2 className="dashboard-title">Book Appointment</h2>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
             sx={{ mb: 4 }}
             id="datetime-local"
@@ -50,16 +49,13 @@ export default function BookAppointment() {
             fullWidth
             type="datetime-local"
             label="Select Timing"
-            value={date}
             onChange={e => setDate(e.target.value)}
             helperText="Please select suitable timings"
-            // sx={{ width: 250 }}
+            required
             InputLabelProps={{
               shrink: true,
             }}
-          >
-            {" "}
-          </TextField>
+          />
 
           <TextField
             id="outlined-multiline-flexible"
@@ -70,9 +66,8 @@ export default function BookAppointment() {
             onChange={e => setDescription(e.target.value)}
             helperText="What's the appointment regarding"
             maxRows={5}
-          >
-            {" "}
-          </TextField>
+            required
+          />
           <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
             Book
           </Button>

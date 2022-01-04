@@ -90,7 +90,7 @@ const staff_register = (req, res) => {
 
 const staff_history_get = (req, res) => {
   // get the patient email and return its data
-  const { email } = req.body;
+  const email = req.params.email;
 
   // return the patient's data except for the password
   Patient.findOne({ email })

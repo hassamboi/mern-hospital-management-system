@@ -40,7 +40,7 @@ export default function Navbar() {
             {user && (
               <>
                 <li>
-                  <Link to="/patient/dashboard" className="menu-link">
+                  <Link to={user.isStaff ? "/staff/dashboard" : "/patient/dashboard"} className="menu-link">
                     Dashboard
                   </Link>
                 </li>

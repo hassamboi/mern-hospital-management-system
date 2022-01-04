@@ -25,20 +25,141 @@ const App = () => {
           <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
 
           {/* Patient Dashboard Routes */}
-          <Route path="/patient/dashboard" element={<PatientDashboard option={""} />} />
-          <Route path="/patient/dashboard/book-appointment" element={<PatientDashboard option={"/book-appointment"} />} />
-          <Route path="/patient/dashboard/view-appointment" element={<PatientDashboard option={"/view-appointment"} />} />
-          <Route path="/patient/dashboard/medical-record" element={<PatientDashboard option={"/medical-record"} />} />
+          <Route
+            path="/patient/dashboard"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : user.isStaff ? (
+                <Navigate to="/staff/dashboard" />
+              ) : (
+                <PatientDashboard option={""} />
+              )
+            }
+          />
+          <Route
+            path="/patient/dashboard/book-appointment"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : user.isStaff ? (
+                <Navigate to="/staff/dashboard" />
+              ) : (
+                <PatientDashboard option={"/book-appointment"} />
+              )
+            }
+          />
+          <Route
+            path="/patient/dashboard/view-appointment"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : user.isStaff ? (
+                <Navigate to="/staff/dashboard" />
+              ) : (
+                <PatientDashboard option={"/view-appointment"} />
+              )
+            }
+          />
+          <Route
+            path="/patient/dashboard/medical-record"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : user.isStaff ? (
+                <Navigate to="/staff/dashboard" />
+              ) : (
+                <PatientDashboard option={"/medical-record"} />
+              )
+            }
+          />
 
           {/* Staff Dashboard Routes */}
 
-          <Route path="/staff/dashboard" element={<StaffDashboard option={""} />} />
-          <Route path="/staff/dashboard/doctor" element={<StaffDashboard option={"/doctor"} />} />
-          <Route path="/staff/dashboard/cashier" element={<StaffDashboard option={"/cashier"} />} />
-          <Route path="/staff/dashboard/receptionist" element={<StaffDashboard option={"/receptionist"} />} />
-          <Route path="/staff/dashboard/labassistant" element={<StaffDashboard option={"/labassistant"} />} />
-          <Route path="/staff/dashboard/nurse" element={<StaffDashboard option={"/nurse"} />} />
-          <Route path="/staff/dashboard/pharmacist" element={<StaffDashboard option={"/pharmacist"} />} />
+          <Route
+            path="/staff/dashboard"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : !user.isStaff ? (
+                <Navigate to="/patient/dashboard" />
+              ) : (
+                <StaffDashboard option={""} />
+              )
+            }
+          />
+          <Route
+            path="/staff/dashboard/doctor"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : !user.isStaff ? (
+                <Navigate to="/patient/dashboard" />
+              ) : (
+                user.jobTitle === "doctor" && <StaffDashboard option={"/doctor"} />
+              )
+            }
+          />
+          <Route
+            path="/staff/dashboard/cashier"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : !user.isStaff ? (
+                <Navigate to="/patient/dashboard" />
+              ) : (
+                user.jobTitle === "cashier" && <StaffDashboard option={"/cashier"} />
+              )
+            }
+          />
+          <Route
+            path="/staff/dashboard/receptionist"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : !user.isStaff ? (
+                <Navigate to="/patient/dashboard" />
+              ) : (
+                user.jobTitle === "receptionist" && <StaffDashboard option={"/receptionist"} />
+              )
+            }
+          />
+          <Route
+            path="/staff/dashboard/labassistant"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : !user.isStaff ? (
+                <Navigate to="/patient/dashboard" />
+              ) : (
+                user.jobTitle === "labassistant" && <StaffDashboard option={"/labassistant"} />
+              )
+            }
+          />
+          <Route
+            path="/staff/dashboard/nurse"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : !user.isStaff ? (
+                <Navigate to="/patient/dashboard" />
+              ) : (
+                user.jobTitle === "nurse" && <StaffDashboard option={"/nurse"} />
+              )
+            }
+          />
+          <Route
+            path="/staff/dashboard/pharmacist"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : !user.isStaff ? (
+                <Navigate to="/patient/dashboard" />
+              ) : (
+                user.jobTitle === "pharmacist" && <StaffDashboard option={"/pharmacist"} />
+              )
+            }
+          />
           {/* Default Route */}
           <Route path="*" element={<Home />} />
         </Routes>

@@ -3,22 +3,19 @@ const mongoose = require("mongoose");
 // schema for a single bill item (used in patient->medical_records->payment_details)
 const billItemSchema = new mongoose.Schema({
   name: { type: String },
-  description: { type: String },
   price: { type: Number },
 });
 
 // schema for a single test (used in patient->medical_records->test_report)
 const testSchema = new mongoose.Schema({
   name: { type: String },
-  description: { type: String },
-  result: { type: Boolean },
+  result: { type: String },
 });
 
 // schema for a single medicine (used in patient->medical_records->medicines)
 const medicineSchema = new mongoose.Schema({
   name: { type: String },
   dosage_mg: { type: Number },
-  timings: { type: String },
   prepared_by: { type: String },
 });
 

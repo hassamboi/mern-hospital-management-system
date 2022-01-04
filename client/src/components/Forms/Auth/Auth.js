@@ -70,7 +70,7 @@ export default function Auth({ isPatient, handleSwitch }) {
           <Typography component="h1" variant="h5">
             {isPatient ? "Patient Login" : "Staff Login"}
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -96,17 +96,6 @@ export default function Auth({ isPatient, handleSwitch }) {
               onChange={e => setPassword(e.target.value)}
               value={password}
             />
-            {/* {!isPending && (
-              <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                Log In
-              </Button>
-            )}
-            {isPending && (
-              <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} disabled>
-                Loading
-              </Button>
-            )} */}
-            {/* {error && <div className="error">{error}</div>} */}
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Log In
             </Button>

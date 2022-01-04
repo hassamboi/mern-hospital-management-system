@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -17,9 +16,6 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-
-// styles
-import "./MedicalRecord.css";
 
 function Row(props) {
   const { record } = props;
@@ -163,7 +159,9 @@ export default function MedicalRecord() {
                 </TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>{records && records.map((record, index) => <Row align="left" key={index} record={record} />)}</TableBody>
+            <TableBody>
+              {records && records.map((record, index) => <Row align="left" key={index} record={record} />)}
+            </TableBody>
           </Table>
         </TableContainer>
       </Paper>
