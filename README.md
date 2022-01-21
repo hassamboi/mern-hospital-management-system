@@ -1,6 +1,6 @@
 # Hospital Management System built in MERN Stack.
 
-Add MONGO_URI and JWT_SECRET in ###`.env` in /server as environment variables.
+Add MONGO_URI and JWT_SECRET in `.env` in /server as environment variables.
 
 To start the client, inside the client directory you can run:
 
