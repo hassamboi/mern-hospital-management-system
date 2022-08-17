@@ -18,25 +18,25 @@ To start the server, inside the server directory you can run:
 
 ![](images/landing.PNG)
 
-Usecase diagram
+#### Usecase diagram ####
 
 ![](images/use_case.PNG)
 
-Activity diagram
+#### Activity diagram ####
 
 ![](images/activity_diagram.PNG)
 
-Swimlane diagram
+#### Swimlane diagram ####
 
 ![](images/swimlane_diagram.PNG)
 
-Associations and class diagram
+#### Associations and class diagram ####
 
 ![](images/associations.PNG)
 
 ![](images/class_diagram.PNG)
 
-Other UI
+#### Other UI ####
 
 ![](images/login.PNG)
 
