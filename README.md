@@ -15,3 +15,7 @@ To start the server, inside the server directory you can run:
 ### `npm install`
 
 ### `npm run dev`
+
+## Screenshots:
+
+![](images/landing.PNG)
