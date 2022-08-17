@@ -18,33 +18,13 @@ To start the server, inside the server directory you can run:
 
 ![](images/landing.PNG)
 
-#### Usecase diagram ####
-
-![](images/use_case.PNG)
-
-#### Activity diagram ####
-
-![](images/activity_diagram.PNG)
-
-#### Swimlane diagram ####
-
-![](images/swimlane_diagram.PNG)
-
-#### Associations and class diagram ####
-
-![](images/associations.PNG)
-
-![](images/class_diagram.PNG)
-
-#### Other UI ####
-
-![](images/login.PNG)
-
 ![](images/staff_login.PNG)
 
 ![](images/patient_dashboard.PNG)
 
-Every staff member - Doctor, nurse, receptionist, cashier, lab assitant etc have their seperate portals
+#### Staff Member Portals ####
+
+Every staff member - Doctor, nurse, receptionist, cashier, lab assitant etc have their seperate portals 
 
 ![](images/doctor_portal.PNG)
 
